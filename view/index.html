@@ -7,17 +7,14 @@
     <title>Automatisation du Lecture de fichier JSON</title>
   </head>
   <body>
-    <!-- <nav class="nav-bar">
-      <a href="" ><img src="./assets/JSONBuddy.png" id="logo" alt="logo" /></a>
-      <button>Login</button>
-    </nav> -->
     <section>
-      <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" id="UploadFileJson" />
-        <input type="submit" value="Upload">
+      <h1>File Json Upload</h1>
+      <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="file" id="UploadFileJson" required />
+        <input type="submit" value="Upload" />
       </form>
     </section>
   </body>
-  <script src="../upload.js"></script>
-  
+  <script type="module" src="../database.js"></script>
+  <script type="module" src="../upload.js"></script>
 </html>

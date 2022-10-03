@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `filejson`;
 CREATE TABLE IF NOT EXISTS `filejson` (
   `idFille` int(255) NOT NULL,
-  `json` json NOT NULL,
+  `fileName` json NOT NULL,
   `userId` varchar(255) NOT NULL,
   PRIMARY KEY (`idFille`),
   KEY `userId` (`userId`)

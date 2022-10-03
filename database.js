@@ -1,18 +1,19 @@
-let mysql = require("mysql");
-let con = mysql.createConnection({
+const mysql = require("mysql");
+const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
   database: "format-json"
 });
 
-
 let info = [["hello word", "ATGUIRI", "open&Sesame"]];
+export { SingUp, Login, UploadJson };
 /**
  * SingUp function for create an account
- * @param {id , email , password} info 
+ * @param {id , email , password} info
  */
-function SingUp(info) {
+
+const SingUp = (info) => {
   this.info = info;
   con.connect(function (err) {
     if (err) throw err;
@@ -23,22 +24,35 @@ function SingUp(info) {
       console.log("records inserted:" + result.affectedRows);
     });
   });
-}
+};
 
 /**
  * Login function in order to enter an account
- * @param {email , password} info 
+ * @param {email , password} info
  */
- function Login(info) {
-    this.info = info;
-    con.connect(function (err) {
+const Login = (info) => {
+  this.info = info;
+  con.connect(function (err) {
+    if (err) throw err;
+    console.log("connected");
+    let sql = "SELECTED * FROM users WHERE email VALUES ?";
+    con.query(sql, [this.info], function (err, result) {
       if (err) throw err;
-      console.log("connected");
-      let sql = "SELECTED * FROM users WHERE email VALUES ?";
-      con.query(sql, [this.info], function (err, result) {
-        if (err) throw err;
-     });
     });
-  }
+  });
+};
 
-
+/**
+ * Login function in order to enter an account
+ * @param {idFile , fileName , userId} info file json
+ */
+function UploadJson(idFile, fileName, userId) {
+  con.connect(function (err) {
+    if (err) throw err;
+    const sql = "INSERT INTO filejson (idFile , fileName , userId) VALUES ?";
+    con.query(sql, [this.info], function (err, result) {
+      if (err) throw err;
+      console.log("records inserted:" + result.affectedRows);
+    });
+  });
+}

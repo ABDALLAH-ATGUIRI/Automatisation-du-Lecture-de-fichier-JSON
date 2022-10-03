@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "lecture_json",
   "version": "1.0.0",
   "description": "",
@@ -10,7 +11,8 @@
     "express-fileupload": "^1.4.0",
     "lodash": "^4.17.21",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {},
   "scripts": {
