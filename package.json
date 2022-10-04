@@ -1,7 +1,7 @@
 {
-  "type": "module",
   "name": "lecture_json",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "db.js",
   "dependencies": {

@@ -1,7 +1,11 @@
 import * as database from "./database.js";
+import express from "express";
+import upload from "express-fileupload";
+import path from "path";
+import fileURLToPath from "url";
 
-const express = require("express");
-const upload = require("express-fileupload");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const port = 3000;
 const app = express();
 
@@ -15,21 +19,25 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-app
-  .post("/", (req, res) => {
-    if (res.files) consolce.log(req.files);
+app.post("/", (req, res) => {
+  try {
+    if (!req.files) {
+      res.send("File was not found");
+      return;
+    }
     const file = req.files.file;
-    const uniqueName = new Date().getTime().toString() + ".json";
-    console.log(uniqueName);
-    file.mv("./uploads/" + uniqueName, (err) => {
+    const uniqueName = new Date().getTime().toString();
+    file.mv("./uploads/" + uniqueName + ".json", (err) => {
       if (err) {
         res.send(err);
       } else {
+        //Save to database
+        database.UploadJson(file.name, uniqueName, "1728317635623");
         res.send("File Uploaded");
       }
     });
-  })
-  .subscribe(() => {
-    console.log("gggggggggggggggggggg");
-    database.UploadJson(file, uniqueName, "hello word");
-  });
+  } catch (error) {
+    console.log(error);
+    res.send("Error uploading file");
+  }
+});
