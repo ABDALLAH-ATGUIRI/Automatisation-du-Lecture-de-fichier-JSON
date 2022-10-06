@@ -1,38 +1,16 @@
 {
-  "name": "lecture_json",
+  "name": "back-end",
   "version": "1.0.0",
-  "type": "module",
+  "type":"module",
   "description": "",
-  "main": "db.js",
+  "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.20.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "express-fileupload": "^1.4.0",
-    "express-handlebars": "^6.0.6",
-    "lodash": "^4.17.21",
-    "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.24.0",
-    "uuid": "^9.0.0"
+    "express": "^4.18.1"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.20",
-    "tailwindcss": "^3.1.8"
-  },
+  "devDependencies": {},
   "scripts": {
-    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abdelhaq-laachari/json-visualizer.git"
-  },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/abdelhaq-laachari/json-visualizer/issues"
-  },
-  "homepage": "https://github.com/abdelhaq-laachari/json-visualizer#readme"
+  "license": "ISC"
 }
