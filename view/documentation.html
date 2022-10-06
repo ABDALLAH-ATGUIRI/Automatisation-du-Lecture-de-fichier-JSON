@@ -11,6 +11,8 @@
 	<link rel="shortcut icon" href="../assets/media/logos/logo.png" />
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+	<!-- font awsom -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 	<!--end::Fonts-->
 	<!--begin::Vendor Stylesheets(used by this page)-->
 	<link href="../assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
@@ -43,55 +45,27 @@
 				</div>
 				<!--end::Logo-->
 				<!--begin::Select-->
-				<div class="docs-aside-select flex-column-auto px-7 pt-7 pt-lg-0 pb-lg-5 h-full"
+				<div class="docs-aside-select  h-100 px-7 pt-7 pt-lg-0 pb-lg-5 h-100"
 					id="kt_docs_aside_select">
-					<!--begin::Select wrapper-->
-					<div>
-						<!--begin::Toggle-->
-						<button type="button" class="btn btn-flex flex-stack btn-light w-100 px-4 py-3 rotate"
-							data-kt-menu-trigger="click" data-kt-menu-placement="bottom">
-							<span class="d-flex align-items-center">
-								<span class="d-flex flex-center w-20px h-20px me-2">
-									<img src="../assets/media/framework-logos/html.png" alt="" class="mw-100" />
-								</span>
-								<span class="menu-title">HTML</span>
-							</span>
-							<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-							<span class="svg-icon svg-icon svg-icon-4 rotate-180 ms-3 me-0">
-								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-									xmlns="http://www.w3.org/2000/svg">
-									<path
-										d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-										fill="currentColor" />
-								</svg>
-							</span>
-							<!--end::Svg Icon-->
-						</button>
-						<!--end::Toggle-->
-						<!--begin::Menu-->
-						<div class="docs-aside-select-menu menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-active-bg fw-semibold py-3"
-							data-kt-menu="true">
-							<!--begin::Menu item-->
-							<div class="menu-item px-3" data-bs-toggle="tooltip" data-bs-placement="right"
-								title="Metronic HTML theme documentation" data-bs-delay-show="1000">
-								<a href="#" class="menu-link px-3 active">
-									<span class="d-flex flex-center w-20px h-20px me-2">
-										<img src="../assets/media/framework-logos/html.png" alt="" class="w-100" />
-									</span>
-									<span class="menu-title">HTML</span>
-								</a>
-							</div>
-						</div>
-						<!--end::Menu-->
-					</div>
-					
+					<div class="d-flex flex-column  align-items-center h-100 w-full justify-content-between">
+						<label for="select-file"
+						
+							class="btn btn-primary btn-flex flex-center w-100 h-40px border-0 fw-bold px-4 px-lg-6">Upload
+							file json</label>
+						<input type="file" id="select-file" required hidden>
+						<a class="color-gray absolute justify-self-center" href="./landing.html"> << Page Home</a>
+						
+					</div>		
+
 				</div>
 
-
 			</div>
+
+
 			<!--end::Aside-->
 			<!--begin::Wrapper-->
 			<div class="docs-wrapper d-flex flex-column flex-row-fluid" id="kt_docs_wrapper">
+
 				<!--begin::Header-->
 				<div id="kt_docs_header" class="docs-header align-items-stretch mb-2 mb-lg-10">
 					<!--begin::Container-->
@@ -127,26 +101,13 @@
 								<!--begin::Toolbar-->
 								<div class="d-flex align-items-center">
 									<!--begin::Search-->
-									
 
-									<a class="btn btn-flex btn-color-gray-700 btn-active-color-primary bg-body h-40px border-0 fw-bold px-4 px-lg-6 me-2 me-lg-3"
-										href="./landing.html">Preview</a>
-
-									<a class="btn btn-flex btn-color-gray-700 btn-active-color-primary bg-body h-40px border-0 fw-bold px-4 px-lg-6"
-										href="#">Downloads</a>
-
-									<!-- <a class="btn btn-primary btn-flex h-40px border-0 fw-bold px-4 px-lg-6 ms-2 ms-lg-3" href="#" target="_blank">Purchase</a> -->
-									<!-- upload button  fille json -->
-									<a class="btn btn-primary btn-flex h-40px border-0 fw-bold px-4 px-lg-6 ms-2 ms-lg-3"
-										href="#" target="_blank">Upload</a>
-
-								
 								</div>
 								<!--end::Toolbar-->
 							</div>
 							<!--end::Wrapper-->
 						</div>
-						<div class="border-gray-300 border-bottom border-bottom-dashed"></div>
+
 					</div>
 					<!--end::Container-->
 				</div>
@@ -154,101 +115,32 @@
 				<!--begin::Content-->
 				<div class="docs-content d-flex flex-column flex-column-fluid" id="kt_docs_content">
 					<!--begin::Container-->
-					<div class="container d-flex flex-column flex-lg-row" id="chart">
+					<div class="container d-flex flex-column flex-lg-row" id="show">
 						<!--begin::Card-->
 
-
-						
 
 						<!--end::Card-->
 					</div>
 					<!--end::Container-->
 				</div>
 				<!--end::Content-->
-				<!--begin::Footer-->
-				<div class="py-4 d-flex flex-lg-column py-6" id="kt_footer">
-					<!--begin::Container-->
-					<div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-						<!--begin::Copyright-->
-						<div class="text-dark order-2 order-md-1">
-							<span class="text-muted fw-semibold me-1">2022©</span>
-							<a href="#" target="_blank" class="text-gray-800 text-hover-primary">Json Visualizer</a>
-						</div>
-						<!--end::Copyright-->
-						<!--begin::Menu-->
-						<ul
-							class="menu menu-gray-600 menu-hover-primary fw-semibold order-1 align-items-center mb-3 mb-md-0">
 
-							<!--begin::Menu item-->
-							<li class="menu-item">
-								<!--begin::Menu link-->
-								<a href="#" target="_blank" class="menu-link px-3">
-									<img alt="Keenthemes Github" src="../assets/media/svg/social-logos/github.svg"
-										class="h-20px" />
-								</a>
-								<!--end::Menu link-->
-							</li>
-							<!--end::Menu link-->
-							<!--begin::Menu item-->
-							<li class="menu-item">
-								<!--begin::Menu link-->
-								<a href="https://twitter.com/keenthemes" target="_blank" class="menu-link px-3">
-									<img alt="Keenthemes Twitter" src="../assets/media/svg/social-logos/twitter.svg"
-										class="h-20px" />
-								</a>
-								<!--end::Menu link-->
-							</li>
-							<!--end::Menu link-->
-							<!--begin::Menu item-->
-							<li class="menu-item">
-								<!--begin::Menu link-->
-								<a href="https://www.instagram.com/keenthemes" target="_blank" class="menu-link px-3">
-									<img alt="Keenthemes Instagram" src="../assets/media/svg/social-logos/instagram.svg"
-										class="h-20px" />
-								</a>
-								<!--end::Menu link-->
-							</li>
-							<!--end::Menu link-->
-							<!--begin::Menu item-->
-							<li class="menu-item">
-								<!--begin::Menu link-->
-								<a href="https://www.facebook.com/keenthemes" target="_blank" class="menu-link px-3">
-									<img alt="Keenthemes Facebook" src="../assets/media/svg/social-logos/facebook.svg"
-										class="h-20px" />
-								</a>
-								<!--end::Menu link-->
-							</li>
-							<!--end::Menu link-->
-							<!--begin::Menu item-->
-
-							<!--end::Menu link-->
-						</ul>
-						<!--end::Menu-->
-					</div>
-					<!--end::Container-->
-				</div>
-				<!--end::Footer-->
 			</div>
 			<!--end::Wrapper-->
 		</div>
 		<!--end::Page-->
 	</div>
 
+	<!-- <script>var hostUrl = "../assets/";</script> -->
+	<script>
+		fetch("treedata.json")
 
+	</script>
 
-
-	<script src="../d3.js"></script>
-	<script src="../d3-selection-multi.js"></script>
-	<script type="text/javascript" src="../treedata.json"></script>
-	<script src="../index.js"></script>
-	<script>var hostUrl = "../assets/";</script>
 	<script src="../assets/plugins/global/plugins.bundle.js"></script>
 	<script src="../assets/js/scripts.bundle.js"></script>
-	<!--end::Global Javascript Bundle-->
-	<!--begin::Custom Javascript(used by this page)-->
 	<script src="../assets/js/custom/authentication/sign-in/general.js"></script>
 
 </body>
-<!--end::Body-->
 
 </html>

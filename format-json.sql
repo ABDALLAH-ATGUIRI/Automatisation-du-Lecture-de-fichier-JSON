@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 29 sep. 2022 à 13:22
+-- Généré le : mar. 04 oct. 2022 à 11:27
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -24,31 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `filejson`
+-- Structure de la table `json_file`
 --
 
-DROP TABLE IF EXISTS `filejson`;
-CREATE TABLE IF NOT EXISTS `filejson` (
-  `idFille` int(255) NOT NULL,
-  `json` json NOT NULL,
-  `userId` varchar(255) NOT NULL,
-  PRIMARY KEY (`idFille`),
-  KEY `userId` (`userId`)
+DROP TABLE IF EXISTS `json_file`;
+CREATE TABLE IF NOT EXISTS `json_file` (
+  `ID_file` varchar(255) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `ID_user` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID_file`),
+  KEY `ID_user` (`ID_user`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `users`
+-- Déchargement des données de la table `json_file`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `idUser` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`idUser`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO `json_file` (`ID_file`, `file_name`, `ID_user`) VALUES
+('1664882324159', 'data.json', '1728317635623');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
