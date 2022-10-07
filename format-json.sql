@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 04 oct. 2022 à 11:27
+-- Généré le : jeu. 06 oct. 2022 à 14:43
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -41,7 +41,31 @@ CREATE TABLE IF NOT EXISTS `json_file` (
 --
 
 INSERT INTO `json_file` (`ID_file`, `file_name`, `ID_user`) VALUES
-('1664882324159', 'data.json', '1728317635623');
+('1664882324159', 'data.json', '1728317635623'),
+('1664964146496', 'data.json', '1728317635623'),
+('1664964753447', 'data.json', '1728317635623'),
+('1664976980799', 'data.json', '1728317635623');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `ID_user` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID_user`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`ID_user`, `email`, `password`) VALUES
+('1728317635623', 'wahbi@gmail.com', 'open&Sesame');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
