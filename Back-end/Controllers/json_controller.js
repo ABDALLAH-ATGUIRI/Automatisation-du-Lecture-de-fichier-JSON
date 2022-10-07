@@ -1,8 +1,10 @@
 import * as database from "../Models/db_model.js";
-import models from "../Models/json_model.js.js";
+import * as models from "../Models/json_model.js";
 import express from "express";
 import upload from "express-fileupload";
 import path from "path";
+import cors from "cors";
+
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -10,10 +12,11 @@ const __dirname = path.dirname(__filename);
 const port = 3000;
 const app = express();
 
+app.use(cors());
 app.use(upload());
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/view/index.html");
+  res.sendFile('../View/index.html');
 });
 
 app.listen(port, () => {
@@ -46,6 +49,5 @@ app.post("/", (req, res) => {
 
 // GET file json
 app.get("/jsonfile/:uid", (request, response) => {
-  response.sendFile(models.loadJson(request.params.uid));
-  //  response.send();
+  response.send(models.readFileJson(request.params.uid));
 });

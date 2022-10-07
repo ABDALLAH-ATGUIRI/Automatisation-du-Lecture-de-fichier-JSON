@@ -1,3 +1,8 @@
 import { readFileSync } from "fs";
 
-const loadJson = (file) => JSON.parse(readFileSync(file + ".json"));
+export{
+    readFileJson
+}
+
+const readFileJson = (file) => {return JSON.parse(readFileSync("Uploads/"+file + ".json"))};
+
