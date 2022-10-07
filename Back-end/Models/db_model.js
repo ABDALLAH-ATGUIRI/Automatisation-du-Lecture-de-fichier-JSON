@@ -7,7 +7,7 @@ const con = mysql.createConnection({
   database: "format-json"
 });
 
-// let info = [["hello word", "ATGUIRI", "open&Sesame"]];
+
 export { SingUp, Login, UploadJson };
 
 /**

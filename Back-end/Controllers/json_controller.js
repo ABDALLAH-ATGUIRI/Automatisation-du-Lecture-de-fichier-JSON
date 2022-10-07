@@ -13,7 +13,7 @@ const app = express();
 app.use(upload());
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/view/index.html");
+  res.sendFile(__dirname + "../../Front-end/view/documentation.html");
 });
 
 app.listen(port, () => {
@@ -49,3 +49,5 @@ app.get("/jsonfile/:uid", (request, response) => {
   response.sendFile(models.loadJson(request.params.uid));
   //  response.send();
 });
+
+// SingUp
