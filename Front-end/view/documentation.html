@@ -32,7 +32,7 @@
 				<div class="docs-aside-select  h-100 px-7 pt-7 pt-lg-0 pb-lg-5 h-100" id="kt_docs_aside_select">
 					<div class="d-flex flex-column  align-items-center h-100 w-full justify-content-between">
 						<label for="selectFiles"
-							class="btn btn-bg-warning btn-flex flex-center w-100 h-40px border-0 fw-bold px-4 px-lg-6">Upload
+							class="btn btn-bg-primary btn-flex flex-center w-100 h-25px border-0 fw-bold px-2 px-lg-6">Upload
 							file json</label>
 						<input type="file" id="selectFiles" value="Import" required hidden />
 						<button class="bg-success border-0 mt-2 mb-2" id="import">Import</button>
@@ -46,7 +46,7 @@
 			<div class="docs-wrapper d-flex flex-column flex-row-fluid" id="kt_docs_wrapper">
 				<div id="kt_docs_header" class="docs-header align-items-stretch mb-2 mb-lg-10">
 					<div class="container">
-						<div class="d-flex align-items-stretch justify-content-between py-3 h-75px">
+						<div class="d-flex align-items-stretch justify-content-between py-3 h-30px">
 							<div class="d-flex align-items-center d-lg-none ms-n2 me-1" title="Show aside menu">
 								<div class="btn btn-icon btn-flex btn-active-color-primary" id="kt_docs_aside_toggle">
 									<span class="svg-icon svg-icon-1 mt-1">
@@ -62,16 +62,14 @@
 									</span>
 								</div>
 							</div>
-							<div class="d-flex align-items-center justify-content-between flex-lg-grow-1">
-								<div class="d-flex align-items-center">
-								</div>
-							</div>
+						
 						</div>
 					</div>
 				</div>
 				<div class="docs-content d-flex flex-column flex-column-fluid" id="kt_docs_content">
-					<div class="container d-flex flex-column flex-lg-row" id="showJson">
+					<div id="showJson">
 						<!-- display -->
+						
 
 					</div>
 				</div>
@@ -83,7 +81,7 @@
 		{
 			var files = document.getElementById('selectFiles').files;
 			const showJson = document.getElementById('showJson');
-			// console.log(files);
+			// 
 			if (files.length <= 0)
 			{
 				return false;
@@ -91,55 +89,59 @@
 			var fr = new FileReader();
 			fr.onload = function (e)
 			{
-				// console.log(e);
+				// 
 				var result = JSON.parse(e.target.result);
-				var formatted = JSON.stringify(result, null, 2);
-				document.getElementById('result').value = formatted;
+				document.getElementById('result').value = e.target.result;
+
+				console.log(e.target);
 				// how to display value of object of objects in html
 
 				const getVal = () =>
 				{
 					for (let key in result)
 					{
-
 						if (typeof result[key] === 'object')
 						{
 							const ul = document.createElement('ul');
-							const h1 = document.createElement('span');
-							console.log(key );
-							h1.innerHTML = key;
-							ul.appendChild(h1);
+							const li = document.createElement('li');
+							li.innerHTML = key;
+							// console.log(typeof key);
+							li.style.color = 'white';
+							li.style.fontWeight = 'bold';
+							li.style.backgroundColor = 'black';
+							li.style.marginRight = '50%';
+							console.log(typeof key);
+							ul.appendChild(li);
 							showJson.appendChild(ul);
 							for (let key2 in result[key])
 							{
-								const div2 = document.createElement("li");
-								div2.innerHTML = `${key2} : 
-								${result[key][key2]}`;
+								const div2 = document.createElement("ul");
+								div2.innerHTML = `${key2} : ${result[key][key2]}`;
+								div2.style.color = 'green';
+								div2.style.listStyleType = 'none';
+								div2.style.marginLeft = '20px';
 								showJson.appendChild(div2);
 							}
 						} else
 						{
-							const div = document.createElement("li");
-							div.innerHTML = `${key} <br/> : 
-							${result[key]}`;
-							showJson.appendChild(div);
+							
+							const ul = document.createElement("ul");
+							const li = document.createElement('li');
+							li.innerHTML = ` ${key}  : ${result[key]} <br/>`;
+							li.style.listStyleType = 'none';
+							li.style.fontWeight = 'bold';
+							li.style.backgroundColor = 'black';
+							li.style.color = 'white';
+							li.style.marginRight = '50%';
+							ul.appendChild(li);
+							showJson.appendChild(ul);
 						}
 					}
 				}
-
 				getVal();
 			};
 			fr.readAsText(files.item(0));
 		};
-
-
-
-
-
-
-
-
-
 	</script>
 	<script src="../assets/plugins/global/plugins.bundle.js"></script>
 	<script src="../assets/js/scripts.bundle.js"></script>
