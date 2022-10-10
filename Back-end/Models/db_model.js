@@ -1,14 +1,22 @@
 import mysql from "mysql";
+import dotenv from "dotenv";
+export { SingUp, Login, UploadJson };
 
-const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "format-json"
+dotenv.config({path:'../.env'})
+const db = mysql.createConnection({
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE
 });
 
-// let info = [["hello word", "ATGUIRI", "open&Sesame"]];
-export { SingUp, Login, UploadJson };
+db.connect((error) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("MSQL Connected...");
+  }
+});
 
 /**
  * SingUp function for create an account
@@ -16,7 +24,7 @@ export { SingUp, Login, UploadJson };
  */
 const SingUp = (info) => {
   this.info = info;
-  con.connect(function (err) {
+  db.connect(function (err) {
     if (err) throw err;
     console.log("connected");
     let sql = "INSERT INTO users (idUser , email,password) VALUES ?";
@@ -33,7 +41,7 @@ const SingUp = (info) => {
  */
 const Login = (info) => {
   this.info = info;
-  con.connect(function (err) {
+  db.connect(function (err) {
     if (err) throw err;
     console.log("connected");
     let sql = "SELECTED * FROM users WHERE email VALUES ?";

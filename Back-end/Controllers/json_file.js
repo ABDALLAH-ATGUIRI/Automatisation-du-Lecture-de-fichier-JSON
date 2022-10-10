@@ -9,7 +9,7 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const port = 3000;
+const port = process.env.APP_PATH;
 const app = express();
 
 app.use(cors());
@@ -51,3 +51,4 @@ app.post("/", (req, res) => {
 app.get("/jsonfile/:uid", (request, response) => {
   response.send(models.readFileJson(request.params.uid));
 });
+
