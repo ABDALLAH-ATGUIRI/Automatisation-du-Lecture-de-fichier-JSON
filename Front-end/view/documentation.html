@@ -39,7 +39,7 @@
 						<textarea class="w-100 h-100 bg-dark text-white " id="result"
 							style="font-size:11px; font-family:italic;"></textarea>
 						<a class="color-gray absolute justify-self-center" href="./landing.html">
-							<< Page Home</a>
+							<b><< Page Home</b></a>
 					</div>
 				</div>
 			</div>
@@ -62,15 +62,13 @@
 									</span>
 								</div>
 							</div>
-						
+
 						</div>
 					</div>
 				</div>
 				<div class="docs-content d-flex flex-column flex-column-fluid" id="kt_docs_content">
 					<div id="showJson">
 						<!-- display -->
-						
-
 					</div>
 				</div>
 			</div>
@@ -80,8 +78,6 @@
 		document.getElementById('import').onclick = function ()
 		{
 			var files = document.getElementById('selectFiles').files;
-			const showJson = document.getElementById('showJson');
-			// 
 			if (files.length <= 0)
 			{
 				return false;
@@ -89,56 +85,41 @@
 			var fr = new FileReader();
 			fr.onload = function (e)
 			{
-				// 
+				var showJson = document.getElementById('showJson');
 				var result = JSON.parse(e.target.result);
 				document.getElementById('result').value = e.target.result;
-
-				console.log(e.target);
-				// how to display value of object of objects in html
-
-				const getVal = () =>
+				// Recursive function to loop through the object
+				let countId = 0
+				var deepFlattenArray = function (array)
 				{
-					for (let key in result)
+					for (let key in array)
 					{
-						if (typeof result[key] === 'object')
+						console.log("element", array[key]);
+						if (typeof array[key] == 'object')
 						{
-							const ul = document.createElement('ul');
-							const li = document.createElement('li');
-							li.innerHTML = key;
-							// console.log(typeof key);
-							li.style.color = 'white';
-							li.style.fontWeight = 'bold';
-							li.style.backgroundColor = 'black';
-							li.style.marginRight = '50%';
-							console.log(typeof key);
-							ul.appendChild(li);
-							showJson.appendChild(ul);
-							for (let key2 in result[key])
-							{
-								const div2 = document.createElement("ul");
-								div2.innerHTML = `${key2} : ${result[key][key2]}`;
-								div2.style.color = 'green';
-								div2.style.listStyleType = 'none';
-								div2.style.marginLeft = '20px';
-								showJson.appendChild(div2);
-							}
+							showJson.innerHTML += `
+								<ul id="ul-${countId++}">
+									<li style="color: white; font-weight: bold; background-color: black; margin-right: 50%;">${key}</li>
+								</ul>
+							`;
+							
+							deepFlattenArray(array[key]);
+
+
 						} else
 						{
-							
-							const ul = document.createElement("ul");
-							const li = document.createElement('li');
-							li.innerHTML = ` ${key}  : ${result[key]} <br/>`;
-							li.style.listStyleType = 'none';
-							li.style.fontWeight = 'bold';
-							li.style.backgroundColor = 'black';
-							li.style.color = 'white';
-							li.style.marginRight = '50%';
-							ul.appendChild(li);
-							showJson.appendChild(ul);
+							showJson.innerHTML += `
+										<ul>
+											<li style="list-style-type: none; font-weight: bold; color: green; margin-right: 50%;"> ${key} => ${array[key]} <br></li>
+										</ul>
+									`;
+							// }
 						}
-					}
-				}
-				getVal();
+
+					};
+
+				};
+				deepFlattenArray(result);
 			};
 			fr.readAsText(files.item(0));
 		};
@@ -147,5 +128,4 @@
 	<script src="../assets/js/scripts.bundle.js"></script>
 	<script src="../assets/js/custom/authentication/sign-in/general.js"></script>
 </body>
-
 </html>
