@@ -1,0 +1,38 @@
+[
+  {
+    "squadName": "Super hero squad",
+    "homeTown": "Metro City",
+    "formed": 2016,
+    "secretBase": "Super tower",
+    "active": true,
+    "members": [
+      {
+        "name": "Abdelhaq",
+        "age": 23,
+        "secretIdentity": "Godfather",
+        "powers1": ["Powers 1", "Powers 1", "Powers 1"]
+      },
+      {
+        "name": "Marouan",
+        "age": 22,
+        "secretIdentity": "Godfather",
+        "powers1": ["Powers 1", "Powers 1", "Powers 9999"]
+      }
+    ]
+  },
+  {
+    "squadName": "common squad",
+    "homeTown": "LA City",
+    "formed": 2011,
+    "secretBase": "less tower",
+    "active": true,
+    "members": [
+      {
+        "name": "Kamal",
+        "age": 9,
+        "secretIdentity": "laas",
+        "powers1": ["Powers 1", "Powers 1", "Powers 1"]
+      }
+    ]
+  }
+]
