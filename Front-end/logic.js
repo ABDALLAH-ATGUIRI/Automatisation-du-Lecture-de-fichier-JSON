@@ -2,21 +2,23 @@
 this.ShowDrawList();
 let counter = [];
 
-let countColumnObj = (data, parent) => {
+let countColumnObj = (data, parent = null) => {
   for (const key in data) {
     const element = data[key];
-    console.log(typeof element === "object")
     if (typeof element === "object" || Array.isArray(element)) {
-      if (!isNaN(Number(key))) {
+      if (parent == null && counter.length > 0) {
         if (isNaN(Number(counter[counter.length - 1].split("-")[1]))) {
           counter.push("col-" + counter.length);
+        } else {
         }
       } else {
-        counter.push("col-" + parent);
+        if (parent) {
+          if (valParent(parent)) counter.push("col-" + parent);
+        } else {
+          counter.push("col-" + "firstGrandfather");
+        }
       }
-      // console.log(counter);
       columns();
-      // console.log(counter);
       for (const key in data) {
         const element = data[key];
         if (
@@ -54,11 +56,14 @@ function ShowDrawList() {
  * @param {*} data
  */
 function TornadeJsonObject(data, parent) {
-  countColumnObj(data, parent);
+  const colParent = parent ? parent : null;
+  countColumnObj(data, colParent);
   for (const key in data) {
     const element = data[key];
-    if (Array.isArray(element) || typeof element === "object") {
+    if (typeof element === "object") {
       this.TornadeJsonObject(element, key);
+    } else if (Array.isArray(element)) {
+      this.TornadeJsonObject(element, (key = null));
     }
   }
 }
@@ -84,31 +89,26 @@ const columns = () => {
 };
 
 const head = (Title, column) => {
-  let col = column;
-  console.log(col);
-
-  do {
-    const el = document.getElementById(column);
-    const objTitle = document.createTextNode(Title);
-    const div = document.createElement("dev");
-    div.classList.add(
-      "row",
-      "btn",
-      "btn-flex",
-      "btn-color-gray-700",
-      "btn-active-color-primary",
-      "bg-body",
-      "h-40px",
-      "border-0",
-      "fw-bold",
-      "px-4",
-      "px-lg-6",
-      "flex-center"
-    );
-    div.id = Title + "-child";
-    div.appendChild(objTitle);
-    el.appendChild(div);
-  } while (valParent(parent));
+  const el = document.getElementById(column);
+  const objTitle = document.createTextNode(Title);
+  const div = document.createElement("dev");
+  div.classList.add(
+    "row",
+    "btn",
+    "btn-flex",
+    "btn-color-gray-700",
+    "btn-active-color-primary",
+    "bg-body",
+    "h-40px",
+    "border-0",
+    "fw-bold",
+    "px-4",
+    "px-lg-6",
+    "flex-center"
+  );
+  div.id = Title + "-child";
+  div.appendChild(objTitle);
+  el.appendChild(div);
 };
 
 const objContainer = (obj, column) => {
@@ -135,26 +135,26 @@ const objContainer = (obj, column) => {
     "text-start"
   );
   div.id = counter[counter.length - 1] + "-child-card";
-  el.appendChild(div);
+
+  const divParent = document.createElement("dev");
+  divParent.id = counter[counter.length - 1].split("-")[1] + "-container";
+  divParent.appendChild(div);
+  el.appendChild(divParent);
 };
 
 const valParent = (key) => {
   const el = document.getElementById(key + "-child");
-  let i = 0;
   if (el) {
     const elParent = el.parentNode;
     const elChild = elParent.childNodes;
-    if (elChild[0].parentNode.id != "col-undefined") {
-      do {
-        i++;
-        if (elChild[i - 1].parentNode.id != elChild[i].parentNode.id)
-          return false;
-      } while (
-        elChild[i - 1].parentNode.id == elChild[i].parentNode.id &&
-        elChild.length < i
-      );
-      return key;
+    const val = [];
+    for (let i = 1; i < elChild.length; i++) {
+      const element = elChild[i];
+      if (elChild.length > 1) {
+        val.push(element.id.includes(key));
+      }
     }
+    return val.includes(true);
   }
   return false;
 };
